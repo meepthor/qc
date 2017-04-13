@@ -32,7 +32,7 @@ func (w QCWriter) WriteRow(row []string) {
 	line := w.Line(row)
 	_, err := io.WriteString(w.Out, line)
 	if err != nil {
-		w.Errors += 1
+		w.Errors++
 	}
 }
 
