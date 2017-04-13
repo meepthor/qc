@@ -21,11 +21,9 @@ Subset text file with selected columns
 
 `qc sample.csv name city state zipcode`
 
-Redelimit text with selected delimiter and separator.
+Redelimit text with selected delimiter and separator. Options include concord, csv, hat, pipe and tab.
 
 `qc -f piped sample.csv > sample.piped`
-
-
 
 ## Motivation
 
