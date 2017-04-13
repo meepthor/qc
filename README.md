@@ -6,7 +6,7 @@ Read and write delimited text files.
 This library can be used to read and write delimited text files that have headers.
 
 - Rows in file should contain cells that correspond with cells in header
-- Delimiter and Separator are assigned based on Header row
+- Delimiter and Separator are determined based on Header row
 - Rows are read into map[string]string
 
 ## Usage
