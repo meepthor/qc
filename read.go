@@ -15,8 +15,8 @@ func Zip(hs, cs []string) (map[string]string, bool) {
 
 	if len(cs) != len(hs) {
 		return row, false
-	} 
-	
+	}
+
 	for i := 0; i < len(hs); i++ {
 		v := cs[i]
 		if len(v) > 0 {
