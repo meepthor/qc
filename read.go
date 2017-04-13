@@ -15,12 +15,12 @@ func Zip(hs, cs []string) (map[string]string, bool) {
 
 	if len(cs) != len(hs) {
 		return row, false
-	} else {
-		for i := 0; i < len(hs); i++ {
-			v := cs[i]
-			if len(v) > 0 {
-				row[hs[i]] = v
-			}
+	} 
+	
+	for i := 0; i < len(hs); i++ {
+		v := cs[i]
+		if len(v) > 0 {
+			row[hs[i]] = v
 		}
 	}
 
@@ -88,7 +88,7 @@ func LineIterator(fname string) <-chan string {
 	return ch
 }
 
-//  Lines returns header and line iterator for provided textfile.
+// Lines returns header and line iterator for provided textfile.
 func Lines(fname string) ([]string, <-chan map[string]string) {
 
 	lines := LineIterator(fname)

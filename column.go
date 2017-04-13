@@ -62,6 +62,7 @@ func (d Delimiters) qstream(s string) <-chan string {
 	return qs
 }
 
+// Trim removes separator from column.
 func (d Delimiters) Trim(col string) string {
 	if len(col) > 1 {
 		if strings.HasPrefix(col, d.Quote) {

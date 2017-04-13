@@ -9,7 +9,7 @@ const (
 	Quote = "\""
 	// Comma ,
 	Comma = ","
-	//Carat
+	//Carat ^
 	Carat = "^"
 	// Ear is '\xfe'
 	Ear = "\xfe"
