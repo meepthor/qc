@@ -14,20 +14,6 @@ type Delimiters struct {
 	Quote string
 }
 
-func (d Delimiters) cstream(s string) <-chan string {
-	cs := make(chan string)
-	go func() {
-		for strings.Contains(s, d.Comma) {
-			found := strings.Index(s, d.Comma)
-			cs <- s[:found]
-			s = s[found+1:]
-		}
-		cs <- s // whether or not len(s) > 0
-		close(cs)
-	}()
-	return cs
-}
-
 func (d Delimiters) qstream(s string) <-chan string {
 
 	qs := make(chan string)
@@ -37,7 +23,7 @@ func (d Delimiters) qstream(s string) <-chan string {
 	var quoted = false
 
 	go func() {
-		for c := range d.cstream(s) {
+		for _, c := range strings.Split(s, d.Comma) {
 			buf = append(buf, c)
 			if strings.HasSuffix(c, d.Quote) {
 				if quoted || (strings.HasPrefix(c, d.Quote) && len(c) > 1) {
