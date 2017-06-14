@@ -29,8 +29,9 @@ Redelimit text with selected delimiter and separator. Options include concord, c
 
 I needed a simple CSV library that could work with my particular needs:
 - supports various delimiter, separator values
+- supports ascii delimiters with utf8 values
 - handles large files
-- relaxed encoding (where sheets could contain values from multiple encodings)
+
 
 ## License
 
