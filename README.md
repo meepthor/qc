@@ -28,7 +28,7 @@ Redelimit text with selected delimiter and separator. Options include concord, c
 ## Motivation
 
 I needed a simple CSV library that could work with my particular needs:
-- supports various delimiter, separator values
+- supports various delimiter, separator characters
 - supports ascii delimiters with utf8 values
 - handles large files
 
