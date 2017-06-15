@@ -23,19 +23,3 @@ const (
 	Empty = ""
 )
 
-// Concordance delimiters
-var Concordance = Delimiters{Comma: Nose, Quote: Ear}
-
-// Piped is Pipe,Tilde
-var Piped = Delimiters{Comma: Pipe, Quote: Tilde}
-
-// PipeCarat is Pipe,Carat
-var PipeCarat = Delimiters{Comma: Pipe, Quote: Carat}
-
-// CSV delimiters
-var CSV = Delimiters{Comma: Comma, Quote: Quote}
-
-// Tabbed use tab as delimiter with no separator
-var Tabbed = Delimiters{Comma: Tab, Quote: Empty}
-
-//var Concord     =   Format(Nose, LeftEar)
