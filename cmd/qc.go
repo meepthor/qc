@@ -3,31 +3,17 @@ package main
 import (
 	"flag"
 	"fmt"
-	"meepthor/qc"
+	"github.com/meepthor/qc"
 )
 
 func main() {
 
 	var showHeader = flag.Bool("h", false, "List Header")
 	var format = flag.String("f", "pipe", "concord csv hat pipe tab")
-	var delimiters qc.Delimiters
-
+	
 	flag.Parse()
 
-	switch *format {
-	case "concord":
-		delimiters = qc.Concordance
-	case "pipe":
-		delimiters = qc.Piped
-	case "hat":
-		delimiters = qc.PipeCarat
-	case "tab":
-		delimiters = qc.Tabbed
-	case "csv":
-		delimiters = qc.CSV
-	default:
-		delimiters = qc.Piped
-	}
+	delimiters := qc.NamedDelimiters(*format)
 
 	if *showHeader && flag.NArg() > 0 {
 		dat := flag.Args()[0]

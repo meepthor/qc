@@ -94,7 +94,7 @@ func Lines(fname string) ([]string, <-chan map[string]string) {
 	lines := LineIterator(fname)
 	first := strings.Replace(<-lines, Bom, "", 1)
 
-	d := GetDelimiters(first)
+	d := GuessDelimiters(first)
 	hdr := NormHeader(d.Split(first))
 
 	rc := make(chan map[string]string)

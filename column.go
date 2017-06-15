@@ -27,8 +27,8 @@ func (d Delimiters) qstream(s string) <-chan string {
 			buf = append(buf, c)
 			if strings.HasSuffix(c, d.Quote) {
 				if quoted || (strings.HasPrefix(c, d.Quote) && len(c) > 1) {
-					yield()
 					quoted = false
+					yield()
 				} else {
 					quoted = true
 				}
@@ -76,8 +76,8 @@ func (d Delimiters) Split(line string) []string {
 
 }
 
-// GetDelimiters assigns Quote and Comma based on string s.
-func GetDelimiters(s string) Delimiters {
+// GuessDelimiters assigns Quote and Comma based on string s.
+func GuessDelimiters(s string) Delimiters {
 
 	qcq := func(c, q string) string { return fmt.Sprintf("%s%s%s", q, c, q) }
 
@@ -99,9 +99,14 @@ func GetDelimiters(s string) Delimiters {
 	} else if found(Comma, Quote) {
 		c = Comma
 		q = Quote
-	} else if found(Tab, "") {
-		c = "\t"
-		q = ""
+	} else if found(Tab, Empty) || found(Comma, Empty) {
+		if strings.Count(s, Tab) > strings.Count(s, Comma) {
+			c = Tab
+			q = Empty
+		} else {
+			c = Comma
+			q = Quote
+		}
 	} else {
 
 		// Probably no delimiter
@@ -153,8 +158,9 @@ func (d Delimiters) Join(row []string) string {
 	return d.simpleJoin(row)
 }
 
-func getDelimiters(key string) Delimiters 
-{
+// NamedDelimiters returns Delimiters for string key
+func NamedDelimiters(key string) Delimiters {
+
 	var delimiters Delimiters
 	
 	switch(key){
@@ -171,6 +177,7 @@ func getDelimiters(key string) Delimiters
 	default:
 		delimiters = Delimiters{Comma: Pipe, Quote: Tilde}
 	}
+
 	return delimiters
 	
 }
