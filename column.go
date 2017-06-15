@@ -152,3 +152,26 @@ func (d Delimiters) Join(row []string) string {
 	}
 	return d.simpleJoin(row)
 }
+
+func getDelimiters(key string) Delimiters 
+{
+	var delimiters Delimiters
+	
+	switch(key){
+	case "concord": 
+		delimiters = Delimiters{Comma: Nose, Quote: Ear}
+	case "pipe":
+		delimiters = Delimiters{Comma: Pipe, Quote: Tilde}
+	case "hat":
+		delimiters = Delimiters{Comma: Pipe, Quote: Carat}
+	case "tab":
+		delimiters = Delimiters{Comma: Tab, Quote: Empty}
+	case "csv":
+		delimiters = Delimiters{Comma: Comma, Quote: Quote}
+	default:
+		delimiters = Delimiters{Comma: Pipe, Quote: Tilde}
+	}
+	return delimiters
+	
+}
+
