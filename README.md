@@ -11,7 +11,7 @@ This library can be used to read and write delimited text files that have header
 
 ## Usage
 
-main/qc.go provides an executable that exposes three functions.
+cmd/qc.go provides an executable that exposes three functions.
 
 List columns included in header
 
