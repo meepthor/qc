@@ -26,7 +26,7 @@ func (d Delimiters) qstream(s string) <-chan string {
 		for _, c := range strings.Split(s, d.Comma) {
 			buf = append(buf, c)
 			if strings.HasSuffix(c, d.Quote) {
-				if quoted || (strings.HasPrefix(c, d.Quote) && len(c) > 1) {
+				if quoted || (strings.HasPrefix(c, d.Quote)) {
 					quoted = false
 					yield()
 				} else {
