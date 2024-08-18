@@ -26,12 +26,10 @@ func (d Delimiters) qstream(s string) <-chan string {
 		for _, c := range strings.Split(s, d.Comma) {
 			buf = append(buf, c)
 			if strings.HasSuffix(c, d.Quote) {
-				if quoted || (strings.HasPrefix(c, d.Quote)) {
+				if quoted || len(c) > 1 {
 					quoted = false
 					yield()
-				} else {
-					quoted = true
-				}
+				} 
 			} else if !quoted {
 				if strings.HasPrefix(c, d.Quote) {
 					quoted = true
